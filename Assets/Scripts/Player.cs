@@ -33,16 +33,13 @@ public class Player : MonoBehaviour
         {
             if (gameStarted == true)
             {
-                vanhaObjekti = instantioituObjekti;
                 GameController.instance.AddScore(10);
+                vanhaObjekti = instantioituObjekti;
                 vanhaObjekti.GetComponent<Rigidbody2D>().simulated = true;
                 vanhaObjekti.GetComponent<CircleCollider2D>().enabled = true;
             }
             int randomBallIndex = Random.Range(0, 4);
             GameObject uusiObjekti = GameController.instance.balls[randomBallIndex];
-
-            Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
-            
 
             instantioituObjekti = Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
             instantioituObjekti.GetComponent<Rigidbody2D>().simulated = false;

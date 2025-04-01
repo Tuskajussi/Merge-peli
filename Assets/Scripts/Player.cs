@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
             int randomBallIndex = Random.Range(0, 4);
             GameObject uusiObjekti = GameController.instance.balls[randomBallIndex];
             Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
-            GameController.instance.score += 10;
+            // Muutettu score privaatiksi ja käytetään apufunktiota joka samalla päivittää UI:n
+            // GameController.instance.score += 10;
+            GameController.instance.AddScore(10);
             //Debug.Log(GameController.instance.score);
         }
     }

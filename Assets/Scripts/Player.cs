@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
     public bool gameStarted = false;
 
     /*
-     * Updatessa tarkistetaan onko peli alkanut, peli alkaa kun ensimm‰isen kerran painetaan hiiren painiketta.
+     * Updatessa tarkistetaan onko peli alkanut, peli alkaa kun ensimm√§isen kerran painetaan hiiren painiketta.
      * jos peli on alkanut napin painalluksella luodaan uusi objekti randomilla listasta.
-     * mik‰li pelaaja on jo luonut yhden kappaleen, tiputetaan se, aiempi instantioitu objekti seuraa hiirt‰ peliss‰. (p‰ivitet‰‰n joka framella positio)
+     * mik√§li pelaaja on jo luonut yhden kappaleen, tiputetaan se, aiempi instantioitu objekti seuraa hiirt√§ peliss√§. (p√§ivitet√§√§n joka framella positio)
      */
     void Update() 
     {
@@ -34,11 +34,16 @@ public class Player : MonoBehaviour
             if (gameStarted == true)
             {
                 vanhaObjekti = instantioituObjekti;
+                GameController.instance.AddScore(10);
                 vanhaObjekti.GetComponent<Rigidbody2D>().simulated = true;
                 vanhaObjekti.GetComponent<CircleCollider2D>().enabled = true;
             }
             int randomBallIndex = Random.Range(0, 4);
             GameObject uusiObjekti = GameController.instance.balls[randomBallIndex];
+
+            Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
+            
+
             instantioituObjekti = Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
             instantioituObjekti.GetComponent<Rigidbody2D>().simulated = false;
             instantioituObjekti.GetComponent<CircleCollider2D>().enabled = false;

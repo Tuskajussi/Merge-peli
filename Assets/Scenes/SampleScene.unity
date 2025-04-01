@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa99a0a4e0dc3914490c9340043706f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnHeight: 14.14
+  gameStarted: 0
 --- !u!4 &242680178
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 16.15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -543,8 +545,8 @@ Transform:
   m_GameObject: {fileID: 1020989355}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -8.61, y: 4.98, z: 0}
-  m_LocalScale: {x: 9.5418, y: 1, z: 1}
+  m_LocalPosition: {x: -11.0643, y: 6.5388, z: 0}
+  m_LocalScale: {x: 38.182198, y: 6.1826816, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 625019529}
@@ -628,8 +630,8 @@ Transform:
   m_GameObject: {fileID: 1058351820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20.088, y: 1, z: 1}
+  m_LocalPosition: {x: -0.4103, y: -16.1281, z: 0}
+  m_LocalScale: {x: 19.867031, y: 11.2562, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 625019529}
@@ -803,8 +805,8 @@ Transform:
   m_GameObject: {fileID: 1133484961}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 8.97, y: 4.98, z: 0}
-  m_LocalScale: {x: 9.5418, y: 1, z: 1}
+  m_LocalPosition: {x: 10.8669, y: 5.8996, z: 0}
+  m_LocalScale: {x: 35.273098, y: 4.793772, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 625019529}
@@ -849,6 +851,7 @@ MonoBehaviour:
   - {fileID: 8459887784852948135, guid: d918f803a55673547b2608f94ed9326e, type: 3}
   - {fileID: 4115004081795071580, guid: 11811f79f4859354c96ee101e2a9d865, type: 3}
   - {fileID: 4264688383928691557, guid: 3e3c7793327fb0b4fad8ae9b8efcf94f, type: 3}
+  score: 0
 --- !u!4 &1717709642
 Transform:
   m_ObjectHideFlags: 0

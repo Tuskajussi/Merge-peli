@@ -4,22 +4,48 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    void Update()
+    [SerializeField]
+    private float spawnHeight;
+
+    private GameObject instantioituObjekti;
+    private GameObject vanhaObjekti;
+
+    private Vector3 worldPos;
+
+    public bool gameStarted = false;
+
+    /*
+     * Updatessa tarkistetaan onko peli alkanut, peli alkaa kun ensimm‰isen kerran painetaan hiiren painiketta.
+     * jos peli on alkanut napin painalluksella luodaan uusi objekti randomilla listasta.
+     * mik‰li pelaaja on jo luonut yhden kappaleen, tiputetaan se, aiempi instantioitu objekti seuraa hiirt‰ peliss‰. (p‰ivitet‰‰n joka framella positio)
+     */
+    void Update() 
     {
-        if (Input.GetMouseButtonDown(0))
+        if (gameStarted == true)
         {
-            // haetaan hiiren sijainti
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = Camera.main.nearClipPlane; // Aseta z-arvo, jotta ScreenToWorldPoint toimii oikein
-            // muutetaan koordinaatti pelimaailman koordinaateiksi
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            worldPos.y = 5;
-                
+            worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            worldPos.y = spawnHeight;
+            instantioituObjekti.transform.position = worldPos;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (gameStarted == true)
+            {
+                vanhaObjekti = instantioituObjekti;
+                vanhaObjekti.GetComponent<Rigidbody2D>().simulated = true;
+                vanhaObjekti.GetComponent<CircleCollider2D>().enabled = true;
+            }
             int randomBallIndex = Random.Range(0, 4);
             GameObject uusiObjekti = GameController.instance.balls[randomBallIndex];
-            Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
-            GameController.instance.score += 10;
+            instantioituObjekti = Instantiate(uusiObjekti, worldPos, Quaternion.identity, GameController.instance.gameObject.transform);
+            instantioituObjekti.GetComponent<Rigidbody2D>().simulated = false;
+            instantioituObjekti.GetComponent<CircleCollider2D>().enabled = false;
+            //GameController.instance.score += 10;
             //Debug.Log(GameController.instance.score);
+
+            gameStarted = true;
         }
     }
 }

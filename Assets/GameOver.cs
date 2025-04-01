@@ -9,6 +9,8 @@ public class GameOver : MonoBehaviour
         FallingObject hit = collision.gameObject.GetComponent<FallingObject>();
         if (hit) // if-lauseke tarkistaa onko hit muuttujan sisällä objektia vai ei eli true / false
         {
+            hit.enabled = false;
+            hit.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             Time.timeScale = 0;
             Debug.Log("Game over");
         }

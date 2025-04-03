@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
             hit.enabled = false;
             hit.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             Time.timeScale = 0;
-            Debug.Log("Game over");
+            GameController.instance.GameOver();
         }
     }
 }

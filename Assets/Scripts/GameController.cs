@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private int score = 0;
     private UIDocument uiDocument;
     private Label scoreLabel;
+    private Label gameOverLabel;
 
     public static GameController instance;
     private void Awake()
@@ -18,6 +19,7 @@ public class GameController : MonoBehaviour
         if (uiDocument != null)
         {
             scoreLabel = uiDocument.rootVisualElement.Q<Label>("ScoreLabel");
+            gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOverLabel");
         }
     }
     
@@ -42,5 +44,10 @@ public class GameController : MonoBehaviour
         {
             scoreLabel.text = "Score: " + score;
         }
+    }
+    public void GameOver()
+    {
+        gameOverLabel.style.display = DisplayStyle.Flex;
+        Debug.Log("GAME OVER!!!");
     }
 }

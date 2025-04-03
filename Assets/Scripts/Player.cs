@@ -16,8 +16,16 @@ public class Player : MonoBehaviour
     private Vector3 worldPos;
 
     public bool gameStarted = false;
-    
 
+    /*
+     * Awake funktiossa asetetaan pelin aloitus arvot, eli peli ei ole alkanut, spawn on mahdollista ja aikaskaalat on asetettu normaaliksi.
+     */
+    void Awake() {
+        gameStarted = false;
+        canSpawn = true;
+        gameStarted = false;
+        Time.timeScale = 1;
+    }
     /*
      * Updatessa tarkistetaan onko peli alkanut, peli alkaa kun ensimmäisen kerran painetaan hiiren painiketta.
      * jos peli on alkanut napin painalluksella luodaan uusi objekti randomilla listasta.

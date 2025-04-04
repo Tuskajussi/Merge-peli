@@ -1,10 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/styles.uss?fileID=7433441132597879392&amp;guid=2eee3c7d5e5128546b168a716563b7f4&amp;type=3#styles" />
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: column;">
         <ui:Label tabindex="-1" text="Score" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreLabel" style="-unity-text-align: upper-left; white-space: nowrap; color: rgb(0, 0, 0);" />
     </ui:VisualElement>
     <ui:VisualElement name="GameOverScreen" style="flex-grow: 1; position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: center; justify-content: center; flex-direction: column; display: none;">
         <ui:Label tabindex="-1" text="Game Over" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameOverLabel" style="position: relative; align-items: auto; justify-content: flex-start; align-self: center; flex-direction: column; font-size: 55px; display: flex;" />
-        <ui:Button text="New Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewGameButton" style="color: rgb(0, 0, 0);" />
-        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" />
+        <ui:Button text="New Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NewGameButton" class="buttonStyle" />
+        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="buttonStyle" />
     </ui:VisualElement>
 </ui:UXML>

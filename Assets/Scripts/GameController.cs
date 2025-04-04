@@ -13,7 +13,9 @@ public class GameController : MonoBehaviour
     //private Label gameOverLabel;
     private Button newGameButton;
     private Button exitButton;
+    private Button exitPauseButton;
     private VisualElement gameOverScreen;
+    private VisualElement pauseScreen;
 
     public static GameController instance;
     private void Awake()
@@ -26,10 +28,32 @@ public class GameController : MonoBehaviour
             scoreLabel = uiDocument.rootVisualElement.Q<Label>("ScoreLabel");
             //gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOverLabel");
             gameOverScreen = uiDocument.rootVisualElement.Q<VisualElement>("GameOverScreen");
+            pauseScreen = uiDocument.rootVisualElement.Q<VisualElement>("PauseScreen");
             newGameButton = uiDocument.rootVisualElement.Q<Button>("NewGameButton");
             exitButton = uiDocument.rootVisualElement.Q<Button>("ExitButton");
+            exitPauseButton = uiDocument.rootVisualElement.Q<Button>("ExitPauseButton");
             newGameButton.clicked += NewGame;
             exitButton.clicked += Exit;
+            exitPauseButton.clicked += Exit;
+            // piilotetaan gameOverScreen, tämän avulla ei täydy muistaa piilottaa sitä editorissa ja muokkaaminen on helpompaa
+            gameOverScreen.style.display = DisplayStyle.None;
+            pauseScreen.style.display = DisplayStyle.None;
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0; // Pause the game
+                pauseScreen.style.display = DisplayStyle.Flex;
+            }
+            else
+            {
+                Time.timeScale = 1; // Resume the game
+                pauseScreen.style.display = DisplayStyle.None;
+            }
         }
     }
     public void RegisterCollision(GameObject a, GameObject b)

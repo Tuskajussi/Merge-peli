@@ -24,6 +24,10 @@ public class Player : MonoBehaviour
      */
     void Update() 
     {
+        if(GameController.instance.gamePaused)
+        {
+            return; // Jos peli on tauolla, ei tehdä mitään
+        }
         if (gameStarted == true)
         {
             Vector3 mousePos = Input.mousePosition;

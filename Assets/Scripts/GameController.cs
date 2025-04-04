@@ -14,8 +14,10 @@ public class GameController : MonoBehaviour
     private Button newGameButton;
     private Button exitButton;
     private Button exitPauseButton;
+    private Button continueButton;
     private VisualElement gameOverScreen;
     private VisualElement pauseScreen;
+    public bool gamePaused = false;
 
     public static GameController instance;
     private void Awake()
@@ -31,10 +33,13 @@ public class GameController : MonoBehaviour
             pauseScreen = uiDocument.rootVisualElement.Q<VisualElement>("PauseScreen");
             newGameButton = uiDocument.rootVisualElement.Q<Button>("NewGameButton");
             exitButton = uiDocument.rootVisualElement.Q<Button>("ExitButton");
+            continueButton = uiDocument.rootVisualElement.Q<Button>("ContinueButton");
             exitPauseButton = uiDocument.rootVisualElement.Q<Button>("ExitPauseButton");
             newGameButton.clicked += NewGame;
             exitButton.clicked += Exit;
             exitPauseButton.clicked += Exit;
+            continueButton.clicked += PauseToggle;
+
             // piilotetaan gameOverScreen, tämän avulla ei täydy muistaa piilottaa sitä editorissa ja muokkaaminen on helpompaa
             gameOverScreen.style.display = DisplayStyle.None;
             pauseScreen.style.display = DisplayStyle.None;
@@ -44,16 +49,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0; // Pause the game
-                pauseScreen.style.display = DisplayStyle.Flex;
-            }
-            else
-            {
-                Time.timeScale = 1; // Resume the game
-                pauseScreen.style.display = DisplayStyle.None;
-            }
+            PauseToggle();
         }
     }
     public void RegisterCollision(GameObject a, GameObject b)
@@ -94,5 +90,19 @@ public class GameController : MonoBehaviour
     private void Exit()
     {
         Application.Quit();
+    }
+    private void PauseToggle() {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0; // Pause the game
+            pauseScreen.style.display = DisplayStyle.Flex;
+            gamePaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1; // Resume the game
+            pauseScreen.style.display = DisplayStyle.None;
+            gamePaused = false;
+        }
     }
 }

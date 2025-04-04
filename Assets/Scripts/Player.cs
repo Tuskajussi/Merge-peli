@@ -18,15 +18,6 @@ public class Player : MonoBehaviour
     public bool gameStarted = false;
 
     /*
-     * Awake funktiossa asetetaan pelin aloitus arvot, eli peli ei ole alkanut, spawn on mahdollista ja aikaskaalat on asetettu normaaliksi.
-     */
-    void Awake() {
-        gameStarted = false;
-        canSpawn = true;
-        gameStarted = false;
-        Time.timeScale = 1;
-    }
-    /*
      * Updatessa tarkistetaan onko peli alkanut, peli alkaa kun ensimmäisen kerran painetaan hiiren painiketta.
      * jos peli on alkanut napin painalluksella luodaan uusi objekti randomilla listasta.
      * mikäli pelaaja on jo luonut yhden kappaleen, tiputetaan se, aiempi instantioitu objekti seuraa hiirtä pelissä. (päivitetään joka framella positio)

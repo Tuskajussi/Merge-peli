@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     {
         instance = this;
         uiDocument = FindObjectOfType<UIDocument>();
+        Time.timeScale = 1; // muutetaan timeScale 1:ksi, jotta peli käynnistyy oikein uudelleenaloitettaessa
         if (uiDocument != null)
         {
             scoreLabel = uiDocument.rootVisualElement.Q<Label>("ScoreLabel");
